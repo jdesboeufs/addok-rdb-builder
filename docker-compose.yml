@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  db:
+    image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+  builder:
+    build:
+      context: .
+    volumes:
+      - ./data:/data
+    links:
+      - db:redis
