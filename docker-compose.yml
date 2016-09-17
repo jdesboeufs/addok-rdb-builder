@@ -2,7 +2,7 @@ version: "2"
 
 services:
   db:
-    image: redis
+    image: redis:3.2
     command: redis-server /usr/local/etc/redis/redis.conf
     volumes:
       - ./data:/data
