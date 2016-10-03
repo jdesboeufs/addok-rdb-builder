@@ -3,11 +3,13 @@ version: "2"
 services:
   db:
     image: redis:3.2
+    user: jenkins
     command: redis-server /usr/local/etc/redis/redis.conf
     volumes:
       - ./data:/data
       - ./redis.conf:/usr/local/etc/redis/redis.conf
   builder:
+    user: jenkins
     build:
       context: .
     volumes:
