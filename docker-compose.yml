@@ -2,16 +2,11 @@ version: "2"
 
 services:
   db:
-    image: redis:3.2
-    user: jenkins
-    command: redis-server /usr/local/etc/redis/redis.conf
+    image: jdesboeufs/addok-redis:latest
     volumes:
       - ./data:/data
-      - ./redis.conf:/usr/local/etc/redis/redis.conf
   builder:
-    user: jenkins
-    build:
-      context: .
+    image: image: jdesboeufs/addok-rdb-builder:latest
     volumes:
       - ./data:/data
     links:
